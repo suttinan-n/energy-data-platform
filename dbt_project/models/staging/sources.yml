@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw
+    database: airflow
+    schema: public
+    tables:
+      - name: raw_weather
+        description: "Raw weather data from Open-Meteo API"
