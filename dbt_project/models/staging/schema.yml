@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: stg_weather
+    description: "Cleaned weather data from Open-Meteo API"
+    columns:
+      - name: id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: weather_date
+        tests:
+          - not_null
+      - name: temp_max_celsius
+        tests:
+          - not_null
+      - name: location
+        tests:
+          - not_null
+
+  - name: mart_weather_daily
+    description: "Daily weather summary with categories"
+    columns:
+      - name: weather_date
+        tests:
+          - not_null
+      - name: temp_category
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["Very Hot", "Hot", "Warm", "Cool"]
+      - name: rain_category
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["No Rain", "Light Rain", "Moderate Rain", "Heavy Rain"]
